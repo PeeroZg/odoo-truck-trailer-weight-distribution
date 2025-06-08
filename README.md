@@ -34,3 +34,4 @@ The user needs to transport heavy packages using a truck and a trailer. To ensur
 *   The module was developed and tested on Ubuntu 24.04.
 *   PostgreSQL was used as the database.
 *   Standard Odoo 18 installation procedures were followed.
+![Truck and Trailer Tab in Odoo](Odoo - truck and tailer.png)
