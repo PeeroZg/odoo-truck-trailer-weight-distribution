@@ -1,0 +1,47 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* uvid_sale_weight_distribution
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-11 08:38+0000\n"
+"PO-Revision-Date: 2025-03-11 08:38+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: uvid_sale_weight_distribution
+#. odoo-python
+#: code:addons/uvid_sale_weight_distribution/models/sale_order.py:0
+msgid "Not possible"
+msgstr "Nije moguće"
+
+#. module: uvid_sale_weight_distribution
+#: model:ir.model.fields,field_description:uvid_sale_weight_distribution.field_sale_order__package_weights_input
+msgid "Package weights"
+msgstr "Težine paketa"
+
+#. module: uvid_sale_weight_distribution
+#: model:ir.model,name:uvid_sale_weight_distribution.model_sale_order
+msgid "Sales Order"
+msgstr "Prodajni nalog"
+
+#. module: uvid_sale_weight_distribution
+#: model:ir.model.fields,field_description:uvid_sale_weight_distribution.field_sale_order__trailer_packages
+msgid "Trailer"
+msgstr "Prikolica"
+
+#. module: uvid_sale_weight_distribution
+#: model:ir.model.fields,field_description:uvid_sale_weight_distribution.field_sale_order__truck_packages
+msgid "Truck"
+msgstr "Kamion"
+
+#. module: uvid_sale_weight_distribution
+#: model_terms:ir.ui.view,arch_db:uvid_sale_weight_distribution.view_order_form_weight_distribution
+msgid "Truck and trailer"
+msgstr "Kamion s prikolicom"
