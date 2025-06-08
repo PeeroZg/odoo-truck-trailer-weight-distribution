@@ -1,45 +1,36 @@
 # odoo-truck-trailer-weight-distribution
-Odoo 18: Modul za Raspodjelu Težine Paketa između Kamiona i Prikolice
-Ovaj Odoo 18 modul razvijen je kao rješenje tehničkog zadatka. Cilj je omogućiti funkcionalnost na obrascu prodajnog predračuna koja pomaže korisnicima u ravnomjernoj raspodjeli težine paketa između kamiona i prikolice.
+# Odoo 18: Truck and Trailer Package Weight Distribution Module
 
-Opis Problema (Sažetak iz ZADATAK.pdf)
-Korisnik mora prevesti teške pakete koristeći kamion i prikolicu. Kako bi se osigurala optimalna ravnoteža opterećenja i upravljivost vozila, sustav bi trebao pomoći u raspodjeli paketa tako da:
+This Odoo 18 module was developed as a solution to a technical assessment task. The goal is to provide functionality on the Sales Quotation form to help users evenly distribute package weights between a truck and a trailer.
 
-Paketi se utovaruju redoslijedom kojim su uneseni.
+## Problem Statement (Summary from ZADATAK.pdf)
 
-Sustav najprije pokušava napraviti izravnu podjelu popisa paketa na dvije podliste (kamion i prikolica) s jednakim ukupnim težinama.
+The user needs to transport heavy packages using a truck and a trailer. To ensure optimal load balancing and vehicle handling, the system should assist in distributing packages such_that:
 
-Ako izravna podjela nije moguća, sustav pokušava pronaći pivot paket. Taj se paket smatra "između" kamiona i prikolice, a zbroj težina paketa prije pivot paketa (kamion) treba biti jednak zbroju težina paketa nakon pivot paketa (prikolica).
+1.  Packages are loaded in a fixed, entered order.
+2.  The system first attempts a **direct split** of the package list into two sub-lists (truck and trailer) with equal total weights.
+3.  If a direct split isn't possible, the system attempts to find a **pivot package**. This package is considered "between" the truck and trailer, and the sum of weights of packages *before* the pivot (truck) should equal the sum of weights of packages *after* the pivot (trailer).
+4.  If neither method yields an even distribution, it's marked as "Not possible."
 
-Ako nijedna metoda ne daje ravnomjernu raspodjelu, označava se kao "Nije moguće".
+## Features Implemented
 
-Implementirane Funkcionalnosti
-Dodaje novu karticu "Kamion s prikolicom" u obrazac prodajnog naloga (predračuna) u Odoo-u.
+*   Adds a new tab "Kamion s prikolicom" (Truck and trailer) to the Odoo Sales Order (Quotation) form.
+*   Provides an input field `Težine paketa` (Package weights) where users enter a comma-separated string of natural numbers (package weights).
+*   Automatically computes and displays the package distribution in two fields:
+    *   `Kamion` (Truck): Shows the list of packages for the truck.
+    *   `Prikolica` (Trailer): Shows the list of packages for the trailer.
+*   Displays "Nije moguće" (Not possible) if an even distribution according to the rules cannot be achieved.
+*   The calculation respects the fixed order of packages as entered.
 
-Pruža ulazno polje Težine paketa gdje korisnik unosi niz prirodnih brojeva (težina paketa) odvojenih zarezima.
+## Technical Details
 
-Automatski računa i prikazuje raspodjelu paketa u dva polja:
+*   **Odoo Version:** 18.0
+*   **Module Name:** `uvid_sale_weight_distribution` (as provided in the template)
+*   **Core Logic:** Implemented in `models/sale_order.py` by extending the `sale.order` model and adding a compute method `_compute_weight_distribution` triggered by changes to the package weights input.
+*   **View Modification:** The new tab and fields are added to the `sale.view_order_form` using an inherited XML view defined in `views/sale_order_views.xml`.
 
-Kamion: Prikazuje popis paketa za kamion.
+## Setup & Testing Environment
 
-Prikolica: Prikazuje popis paketa za prikolicu.
-
-Prikazuje "Nije moguće" ako raspodjela prema pravilima nije ostvariva.
-
-Izračun poštuje fiksni redoslijed unesenih paketa.
-
-Tehnički Detalji
-Odoo Verzija: 18.0
-
-Naziv Modula: uvid_sale_weight_distribution (prema predlošku)
-
-Osnovna Logika: Implementirana u models/sale_order.py proširivanjem modela sale.order i dodavanjem metode za izračun _compute_weight_distribution koja se aktivira promjenom ulaza za težine paketa.
-
-Izmjena Pogleda: Nova kartica i polja dodani su u sale.view_order_form pomoću naslijeđenog XML pogleda definiranog u views/sale_order_views.xml.
-
-Okruženje za Postavljanje i Testiranje
-Modul je razvijen i testiran na Ubuntu 24.04.
-
-Kao baza podataka korišten je PostgreSQL.
-
-Slijeđene su standardne procedure za instalaciju Odoo 18.
+*   The module was developed and tested on Ubuntu 24.04.
+*   PostgreSQL was used as the database.
+*   Standard Odoo 18 installation procedures were followed.
