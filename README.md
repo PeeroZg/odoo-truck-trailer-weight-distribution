@@ -3,7 +3,7 @@
 
 This Odoo 18 module was developed as a solution to a technical assessment task. The goal is to provide functionality on the Sales Quotation form to help users evenly distribute package weights between a truck and a trailer.
 
-## Problem Statement (Summary from ZADATAK.pdf)
+## Problem Statement
 
 The user needs to transport heavy packages using a truck and a trailer. To ensure optimal load balancing and vehicle handling, the system should assist in distributing packages such_that:
 
